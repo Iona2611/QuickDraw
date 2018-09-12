@@ -1,22 +1,75 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <string>
+
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Cyan);
+	//------------------------------------------------------
+	// Game Setup
+	//------------------------------------------------------
 
-	while (window.isOpen())
+	// Render window creation
+	sf::RenderWindow gameWindow;
+	gameWindow.create(sf::VideoMode::getDesktopMode(), "Quick Draw",
+		sf::Style::Titlebar | sf::Style::Close);
+
+
+	//------------------------------------------------------
+	// End Game Setup
+	//------------------------------------------------------
+
+
+
+
+	//------------------------------------------------------
+	// Game Loop
+	//------------------------------------------------------
+
+	// Runs every frame until the game window is closed 
+	while (gameWindow.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
 
+		
+		 // ----------------------------------------------------
+	    // Input
+	   // ------------------------------------------------------
+
+		// Check for input 
+		sf::Event gameEvent;
+		while (gameWindow.pollEvent(gameEvent))
+
+			// Check if the event is the closed event 
+			if (gameEvent.type == sf::Event::Closed)
+			{
+
+			// close the game window
+				gameWindow.close();
+			}
+
+
+
+
+		 //----------------------------------------------------
+		// Update
+	   //------------------------------------------------------
+
+
+		 //----------------------------------------------------
+		// Draw
+	   //------------------------------------------------------
+
+		// clear the window to a single colour 
+		gameWindow.clear(sf::Color::Black);
+
+
+		// Display the window contents on the screen 
+		gameWindow.display();
+
+
+	} // end of game while loop 
+
+	// exit point for the program
 	return 0;
-}
+
+} // end of main function
